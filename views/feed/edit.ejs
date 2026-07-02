@@ -1,0 +1,48 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12">
+            <h2>Edit your Feed</h2>
+            <form method="post" action="/feed/<%= feed._id %>?_method=put"  class="needs-validation" enctype="multipart/form-data" novalidate>
+                <div class="row">
+                    <div class="mb-3 col-md-8">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" name="feed[title]" class="form-control" required value="<%=feed.title%>">
+                        <div class="invalid-feedback" >Title is required!</div>
+                    </div>
+                    <div class="mb-3 col-md-4">
+                        <label for="category" class="form-label">Category</label>
+                        <select name="feed[category]" class="form-select" id="">
+                            <option value="motivational">motivational</option>
+                            <option value="fitness">fitness</option>
+                            <option value="spiritual">spiritual</option>
+                            <option value="natural-fact">natural-fact</option>
+                        </select>
+                    </div>
+                </div> 
+                <div>
+                    <h4>Current uploaded image</h4>
+                    <img class="current-feed-img" src="<%= originalImageUrl %>" alt="feed image">
+                </div>   
+                <div class="mb-3 ">
+                    <label for="image" class="form-label">Upload new Image</label>   
+                    <input type="file" name="feed[image]" class="form-control" >
+                    <div class="invalid-feedback" >Image is required!</div>
+                </div>
+                <div class="mb-3 ">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="feed[description]" id="" required class="form-control"><%=feed.description%></textarea>
+                    <div class="invalid-feedback" >Description is required!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="info" class="form-label">Info</label>
+                    <textarea name="feed[info]" id="" required class="form-control" ><%=feed.info%></textarea>
+                    <div class="invalid-feedback" >Info is required!</div>
+                </div><br>
+                <button id="Update" class="btn custom-btn w-100">Update</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>

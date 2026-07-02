@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
+  <div class="container-fluid ">
+    <a class="navbar-brand" href="/feed"><img src="/images/logo.png" class="logo" alt="Morning Tea Logo"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <% if(currUser){ %>
+          <a class="nav-link active" aria-current="page" href="/feed"><i style="font-size:larger;" class="fa-solid  fa-house"></i></a>
+          <% currUser.preferredCategories.forEach(category => { %>
+              <% if(category==='news') {%>
+                <a class="nav-link" href="/news">
+                  <%= category.charAt(0).toUpperCase() + category.slice(1) %>
+                </a>
+              <% }else{ %>
+              <a class="nav-link" href="/feeds/<%= category %>">
+                  <%= category.charAt(0).toUpperCase() + category.slice(1) %>
+              </a>
+              <% } %>
+          <% }) %>
+        <% } else { %>
+          <a class="nav-link active" aria-current="page" href="/feed"><i style="font-size:larger;" class="fa-solid  fa-house"></i></a>
+          <a class="nav-link" href="/feeds/motivational">Motivational</a>
+          <a class="nav-link" href="/feeds/fitness">Fitness</a>
+          <a class="nav-link" href="/feeds/spiritual">Spiritual</a>
+          <a class="nav-link" href="/news">News</a>
+          <a class="nav-link" href="/feeds/natural-fact">Natural Fact</a>
+        <% } %>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/feed/new"><i style="font-size: xx-large;" class="fa-solid fa-circle-plus"></i></a>
+        <!-- User Icon -->
+        <i  class="fa-solid nav-link fa-circle-user"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#userMenu"
+          style="cursor:pointer;font-size:xx-large;">
+        </i>
+      </div>
+    </div>  
+  </div>
+</nav>
+<!-- Sidebar -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="userMenu">
+          <div class="offcanvas-header">
+              <h1>@<%= currUser ? currUser.username : "Guest" %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+          </div>
+
+          <div class="offcanvas-body">
+            <% if(!currUser){ %>
+              <a href="/user/login" class="btn  mb-2">Login</a><br>
+              <a href="/user/signup" class="btn mb-2">Sign Up</a>
+            <% } %>
+            <% if(currUser){ %>
+              <a href="/user/profile" class="btn mb-2">You</a>
+              <form action="/user/logout" method="post">
+                  <button style="color: red;" class="btn ">Logout</button>
+              </form>
+            <% } %>
+          </div>
+      </div> 

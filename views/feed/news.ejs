@@ -1,0 +1,16 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <h1 class="MTNews">MTNews</h1>
+    <% news.forEach(article => { %>
+    <div class="newsbox">
+        <% if(article.image){ %>
+            <img src="<%= article.image %>" width="300">
+        <% } %>
+        <h2><%= article.title %></h2>
+        <p><%= article.description %></p>
+        <p><strong><%= article.source.name %></strong></p>
+        <a href="<%= article.url %>" target="_blank">Read More</a>
+    </div>
+    <% }) %>
+
+</body>

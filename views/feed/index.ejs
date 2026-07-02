@@ -1,0 +1,14 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="explore">
+                <% if(currUser){ %>
+                    <a class=" btn" id="exp-pro" type="button" href="/user/profile">Explore yourself!</a>
+                <% } else { %>
+                    <a class=" btn" id="exp-log" href="/user/login">Login/Signup</a>
+                <% } %>
+            </div>
+        </div>
+    </section>
+</body>
