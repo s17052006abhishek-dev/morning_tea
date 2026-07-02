@@ -13,7 +13,9 @@ router.get("/", async (req, res) => {
         const news = response.data.articles;
         res.render("feed/news.ejs", { news });
     } catch (err) {
-        console.log(err);
+        console.log("Status:",err.response?.status);
+        console.log("Data:",err.response?.data);
+        console.log("Message:",err.message);
         res.send("Failed to fetch news.");
     }
 });
