@@ -109,7 +109,7 @@ i{
 
 /*index.ejs*/
 .explore{
-    height: 20vh;
+    height: 30vh;
     display: flex;
     align-items:center;
     justify-content:space-between;
@@ -132,6 +132,10 @@ i{
     padding-left: 3rem;
     padding-right: 3rem;
     border-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 0px!important;
+    border-bottom-left-radius: 0px !important;
 }
 
 
@@ -184,6 +188,24 @@ i{
     }
     .card-img-top{
         height:250px;
+    }
+    .explore{
+        height: 10vh;
+        display: flex;
+        align-items:center;
+        justify-content:end;
+    }
+    #exp-pro{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-top-left-radius: 30px!important;
+        border-bottom-left-radius: 30px!important;
+    }
+    #exp-log{
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-top-left-radius: 30px!important;
+        border-bottom-left-radius: 30px!important;
     }
 }
 
