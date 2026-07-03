@@ -90,6 +90,11 @@ app.use((req,res, next)=>{
     next();
 });
 
+
+app.get("/",(req, res)=>{
+    res.redirect("/feed");
+});
+
 app.use("/feed",feedRouter);
 app.use("/feeds",feedsRouter);
 app.use("/feed/:id/reviews",reviewRouter);
