@@ -2,11 +2,23 @@
 <body>
     <section class="hero">
         <div class="hero-content">
+            <div class="heading mt-4">
+                <h1>Morning Tea</h1>
+                <h5>Learn Something New Everyday.</h5>
+            </div>
             <div class="explore">
                 <% if(currUser){ %>
-                    <a class=" btn" id="exp-pro" type="button" href="/user/profile">Explore yourself!</a>
+                    <a class=" btn index-btn"  type="button" href="/user/profile">Explore yourself!</a>
                 <% } else { %>
-                    <a class=" btn" id="exp-log" href="/user/login">Login/Signup</a>
+                    <a class=" btn index-btn "  href="/user/login">Login/Signup</a>
+                <% } %>
+            </div>
+            <div class="news">
+                <% if(currUser&&currUser.preferredCategories.includes("news")){ %>
+                    <a class=" btn index-btn" id="news"  type="button" href="/news">Know What's happening?!</a>
+                <% } %>
+                <% if(!currUser){ %>
+                    <a class=" btn index-btn" id="news"  type="button" href="/news">Know What's happening?!</a>
                 <% } %>
             </div>
         </div>
